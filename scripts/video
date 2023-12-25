@@ -1,0 +1,5 @@
+#!/bin/bash
+
+read -p "Enter url : " url
+
+yt-dlp -f 'bestvideo[height<=1080]+bestaudio/best[height<=1080]' $url
