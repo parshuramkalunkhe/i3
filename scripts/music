@@ -2,4 +2,4 @@
 
 read -p "Enter Music Playlist URL : " url
 read -p "Enter Full Path : " path
-yt-dlp -f 'ba' -x --audio-format mp3 -o "$path/%(title)s.%(ext)s" $url
+yt-dlp -f 'ba' -x --audio-format mp3 -o "$path%(title)s.%(ext)s" $url
