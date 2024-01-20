@@ -1,7 +1,5 @@
 #!/bin/bash
 
 read -p "Enter url : " url
-read -p "Enter path : " path
-read -p "Enter playlist items ex(1-21) : " items
-
-yt-dlp -f 'bestvideo[height<=1080]+bestaudio/best[height<=1080]' --playlist-items $items -o "$path/%(playlist_index)s-%(title)s.%(ext)s" $url
+read -p "Enter playlist items : " items
+yt-dlp -f 'bestvideo[height<=1080]+bestaudio/best[height<=1080]' --playlist-items $items -o "%(playlist_index)s-%(title)s.%(ext)s" $url
