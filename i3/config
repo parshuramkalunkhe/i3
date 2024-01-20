@@ -193,17 +193,17 @@ bindsym $mod+r mode "resize"
 bar {
     status_command i3status
 	font pango: Noto Sans 10
-	position top
+	position bottom
     separator_symbol " / "
 	output primary
 	tray_padding 5px
     colors {
-        separator #8B0000
+        separator #ffffff
     }
 }
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #8B0000 #285577 #ffffff #2e9ef4   #8b0000
+client.focused          #005577 #285577 #ffffff #005577   #005577
 
 gaps inner 8
 gaps outer 0
