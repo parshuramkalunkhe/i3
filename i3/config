@@ -22,9 +22,9 @@ font pango:monospace 8
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
-#exec --no-startup-id feh --bg-fill "/home/buggy/Pictures/Wallpapers/wallhaven-1pge31.png"
-#exec --no-startup-id xcompmgr
-exec --no-startup-id nitrogen --restore &
+exec --no-startup-id feh --bg-fill "/home/buggy/Pictures/Nature/wallhaven-nrkv21_3840x2160.png"
+exec --no-startup-id xcompmgr
+#exec --no-startup-id nitrogen --restore &
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -59,8 +59,8 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec --no-startup-id dmenu_run
-#bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
-bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
+#bindsym $mod+d exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -192,24 +192,47 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
     status_command i3status
-	font pango: Noto Sans 10
-	position bottom
+    font pango: Noto Sans 10
+    position top
     separator_symbol " / "
-	output primary
-	tray_padding 5px
+    output primary
+    tray_padding 4px
     colors {
         separator #ffffff
     }
 }
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #005577 #285577 #ffffff #005577   #005577
+client.focused          #005577 #285577 #ffffff #005577   #005577 
 
 gaps inner 8
 gaps outer 0
 
 for_window [class="^.*"] border pixel 4
+for_window [class="TelegramDesktop"] floating enable
+for_window [class="Alarm-clock-applet"] floating enable
+for_window [class="Xarchiver"] floating enable
+for_window [class="Blueman-manager"] floating enable
+for_window [class="Guvcview"] floating enable
+for_window [class="guvcview"] floating enable
+for_window [class="obs"] floating enable
+#for_window [class="st"] floating enable
+
 
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
+
+## Screenshots
+bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/ScreenShot/$(date)"
+bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/ScreenShot/$(date)"
+bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/ScreenShot/$(date)"
+
+## Clipboard Screenshots
+bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
+bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+
+## redshift
+bindsym F4 exec --no-startup-id redshift -O 5000
+bindsym Ctrl+F4 exec redshift -x
